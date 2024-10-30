@@ -68,8 +68,12 @@ def dialog1(c):
         text3 = f4.render(dialogs[c][0], True, (3, 22, 84))
         screen.blit(text3, (400, 700))
     pygame.display.update()
-
-    c += 1
+    if c == len(dialogs) - 1:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+    else:
+        c += 1
     return c
 
 def invent(item):
@@ -88,7 +92,6 @@ def start(w, h):
     screen.blit(im, (0, 0))
     im2 = pygame.image.load('Girl.png')
     screen.blit(im2, (100, 150))
-    a = 0
     p = 1
     c = 0
     while True:
@@ -118,9 +121,9 @@ def start(w, h):
                         inv = invent('Записка с кодом')
                         f3 = pygame.font.SysFont('Arial Black', 20)
                         text3 = f3.render('Записка с кодом' + ' - ' + inv.get('Записка с кодом'), True, (0, 0, 0))
-                        screen.blit(text3, (800, 150))
+                        screen.blit(text3, (750, 200))
                         im2 = pygame.image.load('Cod.png')
-                        screen.blit(im2, (1400, 150))
+                        screen.blit(im2, (800, 200))
                     if c >= 12:
                         inv = invent('Записка с кодом')
                         f3 = pygame.font.SysFont('Arial Black', 15)
